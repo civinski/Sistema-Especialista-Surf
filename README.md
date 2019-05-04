@@ -17,44 +17,44 @@ Na primeira coluna estão relacionados os valores referentes à altura média da
 **2. Implementação e testes**
 Para cada variável linguística foi definido um template, conforme a seguir. Para a variável linguística “altura_onda” teremos uma função pré-definida (z) e três trapezoidal.
 
-![Figura 1](/img/1.png)
+![Figura 1](/img/1.PNG)
 
 Na figura 2 temos a representação gráfica dos possíveis valores para a altura da onda, definidos em seu template (valores em cm).
 
-![Figura 2](/img/2.png)
+![Figura 2](/img/2.PNG)
 
 Na figura 3 podemos observar o template definido para a força do vento.
 
-![Figura 3](/img/3.png)
+![Figura 3](/img/3.PNG)
 
 E a seguir, na figura 4, podemos observar a representação gráfica deste template (valores em km/h).
 
-![Figura 4](/img/4.png)
+![Figura 4](/img/4.PNG)
 
 Na figura 5 podemos observar o template definido para as condições de surf
 
-![Figura 5](/img/5.png)
+![Figura 5](/img/5.PNG)
 
 Abaixo, na figura 6, podemos observar a representação gráfica do mesmo.
 
-![Figura 6](/img/6.png)
+![Figura 6](/img/6.PNG)
 
 As regras que vão definir a condição para surf foram codificadas em quatro defrule’s distintos, um para cada variável linguística e condição. A utilização da declaração “salience” foi a solução adotada para garantir que essas regras fossem executadas antes da regra de defuzzificação.
 
-![Figura 7-1](/img/7_1.png)
-![Figura 7-2](/img/7_2.png)
+![Figura 7-1](/img/7_1.PNG)
+![Figura 7-2](/img/7_2.PNG)
 
 Para a defuzzificação foi definida uma variável global (g_resultado) e foi criada uma outra regra (defrule defuzifica) com salience 0, para que dessa forma, ela seja executada após todas as demais regras declaradas com salience 10, para assim, podermos ter o resultado das condições.
 
-![Figura 8 e 9](/img/8-9.png)
+![Figura 8 e 9](/img/8-9.PNG)
 
 Para testes, definimos fatos fixos com a função “deffacts”
 
-![Figura 10](/img/10.png)
+![Figura 10](/img/10.PNG)
 
 A seguir, podemos ver o resultado gerado pela aplicação.
 
-![Figura 11](/img/11.png)
+![Figura 11](/img/11.PNG)
 
 Podemos observar que a condição foi categorizada como “RUIM”, pelo fato de a altura das ondas ser baixa.
 
