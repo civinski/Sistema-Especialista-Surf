@@ -1,7 +1,7 @@
 # Sistema Especialista Surf - IA
-## Gabriel Civinski; William Lohn
+#### Gabriel Civinski; William Lohn
 
-**1. Introdução**  
+## 1. Introdução  
 Neste relatório será detalhada a implementação de um Sistema Especialista Fuzzy utilizando a ferramenta FuzzyClips. A finalidade do sistema é determinar as condições para SURF em um local específico, considerando como variáveis auxiliares a altura média das ondas e a velocidade do vento. As variáveis linguísticas de entrada e saída são mostradas na Tabela 1:
 
  | | | Velocidade vento | | |
@@ -14,7 +14,7 @@ Muito alta | muito boa | razoavel | ruim | ruim
 
 Na primeira coluna estão relacionados os valores referentes à altura média das ondas, enquanto na primeira linha, estão os valores para determinar a velocidade/força do vento. Cruzando os valores, temos definida a condição para surf.
 
-**2. Implementação e testes**  
+## 2. Implementação e testes
 Para cada variável linguística foi definido um template, conforme a seguir. Para a variável linguística “altura_onda” teremos uma função pré-definida (z) e três trapezoidal.
 
 ![Figura 1](/img/1.PNG)
@@ -58,5 +58,5 @@ A seguir, podemos ver o resultado gerado pela aplicação.
 
 Podemos observar que a condição foi categorizada como “RUIM”, pelo fato de a altura das ondas ser baixa.
 
-**3. Conclusão**  
+## 3. Conclusão
 Uma implementação como essa pode ser implementada em aplicações simples, voltadas para surfistas. Em um futuro com melhorias também é possível adicionar outras variáveis para a execução de um cálculo mais preciso, como o clima (seco, chuvoso), força e altura da maré, etc.
