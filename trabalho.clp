@@ -6,9 +6,9 @@
 (deftemplate altura_onda
     0 300 altura_onda
     ((baixa (z 0 50))
-    (media (50 0)(50 1)(130 1)(130 0))
-    (alta (130 0)(130 1)(200 1)(200 0))
-    (muito_alta (200 0)(300 1))
+    (media (51 0)(51 1)(130 1)(130 0))
+    (alta (131 0)(131 1)(200 1)(200 0))
+    (muito_alta (201 0)(300 1))
     )
 )
 
@@ -22,43 +22,57 @@
 )
 
 (deftemplate condicoes
-    0 40
-    ((ruim (0 0)(5 1)(10 0))
-    (razoavel (10 0)(15 1)(20 0))
-    (boa (20 0)(25 1)(30 0))
-    (muito_boa (30 0)(35 1)(40 0))
+    0 4
+    ((ruim (0 0)(0.5 1)(1 0))
+    (razoavel (1.1 0)(1.5 1)(2 0))
+    (boa (2.1 0)(2.5 1)(3 0))
+    (muito_boa (3.1 0)(3.5 1)(4 0))
     )
 )
 
-(defrule Um
-     (altura_onda baixa)
-        (vento fraco)
-    =>
-    (assert (condicoes ruim))
-)
+(defrule ruim
+		(declare (salience 10))
+		(or(and (altura_onda baixa)(vento fraco))
+		   (and (altura_onda baixa)(vento medio))
+           (and (altura_onda baixa)(vento forte))
+           (and (altura_onda baixa)(vento muito_forte))
+           (and (altura_onda media)(vento muito_forte))
+		   (and (altura_onda alta)(vento muito_forte))
+           (and (altura_onda muito_alta)(vento muito_forte))
+           (and (altura_onda muito_alta)(vento forte))
+		)
+		=>
+		(assert (condicoes ruim))
+	)
 
-(defrule Dois
-(altura_onda media)
-        (vento fraco)
-    =>
-    (assert (condicoes boa))
-)
+(defrule razoavel
+		(declare (salience 10))
+		(or(and (altura_onda media)(vento forte))
+		   (and (altura_onda media)(vento medio))
+           (and (altura_onda muito_alta)(vento medio))
+           (and (altura_onda alta)(vento forte))
+		)
+		=>
+		(assert (condicoes razoavel))
+	)
 
-(defrule Tres
-    (declare (salience 10))
-    (or (altura_onda alta)
-        (vento fraco))
-    =>
-    (assert (condicoes muito_boa))
-)
+(defrule boa
+		(declare (salience 10))
+		   (or(and (altura_onda alta)(vento medio))
+           (and (altura_onda media)(vento fraco))
+		)
+		=>
+		(assert (condicoes boa))
+	)
 
-(defrule Quatro
-    (declare (salience 10))
-    (or (altura_onda muito_alta)
-        (vento fraco))
-    =>
-    (assert (condicoes razoavel))
-)
+(defrule muito_boa
+		(declare (salience 10))
+		   (or(and (altura_onda muito_alta)(vento fraco))
+           (and (altura_onda alta)(vento fraco))
+		)
+		=>
+		(assert (condicoes muito_boa))
+	)
 
 (defrule defuzifica
     (declare (salience 0))
@@ -73,7 +87,7 @@
 )
 
 (deffacts condicoes
-    (altura_onda media)
+    (altura_onda baixa)
     (vento fraco)
 )
 
@@ -87,8 +101,5 @@
 ;(plot-fuzzy-value t "+*-" 0 50 (create-fuzzy-value vento fraco)
 ;(create-fuzzy-value vento medio)(create-fuzzy-value vento forte)(create-fuzzy-value vento muito_forte))
 
-;(plot-fuzzy-value t "+*-" 0 10 (create-fuzzy-value comida regular)
-;(create-fuzzy-value comida deliciosa))
-
-;(plot-fuzzy-value t "+*-" 0 30 (create-fuzzy-value gorjeta pouca)
-;(create-fuzzy-value gorjeta media)(create-fuzzy-value gorjeta generosa))
+;(plot-fuzzy-value t "+*-" 0 300 (create-fuzzy-value altura_onda baixa)
+;(create-fuzzy-value altura_onda media)(create-fuzzy-value altura_onda alta)(create-fuzzy-value altura_onda muito_alta))
