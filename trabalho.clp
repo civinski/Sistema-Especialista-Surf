@@ -91,15 +91,13 @@
     (vento fraco)
 )
 
-;(deffacts gorjeta
-;    (servico (6 0)(6 1)(6 0))
-;    (comida (8 0)(8 1)(8 0))
-;)
-
 
 ;copia e cola depois na IDE
 ;(plot-fuzzy-value t "+*-" 0 50 (create-fuzzy-value vento fraco)
 ;(create-fuzzy-value vento medio)(create-fuzzy-value vento forte)(create-fuzzy-value vento muito_forte))
+
+;(plot-fuzzy-value t "+*-" 0 4 (create-fuzzy-value condicoes ruim)
+;(create-fuzzy-value condicoes razoavel)(create-fuzzy-value condicoes boa)(create-fuzzy-value condicoes muito_boa))
 
 ;(plot-fuzzy-value t "+*-" 0 300 (create-fuzzy-value altura_onda baixa)
 ;(create-fuzzy-value altura_onda media)(create-fuzzy-value altura_onda alta)(create-fuzzy-value altura_onda muito_alta))
